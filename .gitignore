@@ -1,0 +1,10 @@
+# VSCode
+.vscode/*
+.idea/*
+
+# Node Folder
+node_modules/*
+
+# Package Files after Tailwind Install
+package-lock.json
+package.json
