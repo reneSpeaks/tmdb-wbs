@@ -6,7 +6,7 @@ const movieSection = document.querySelector('#movies');
 
 export function addMovieCard(movie) {
     const cardWrapper = createElement('div', '', movieSection, {
-        class: 'relative flex flex-col sm:grid sm:grid-cols-2 bg-white shadow-sm border border-slate-200 rounded-lg sm:h-full sm:max-h-80 w-full max-w-96',
+        class: 'relative flex flex-col sm:grid sm:grid-cols-2 bg-white shadow-sm border border-slate-200 rounded-tr-3xl rounded-bl-3xl sm:h-full sm:max-h-80 w-full max-w-96',
     });
 
     const leftContent = createElement('div', '', cardWrapper, {
@@ -20,7 +20,7 @@ export function addMovieCard(movie) {
     const cardImage = createElement('img', '', leftContent, {
         src: 'https://www.themoviedb.org/t/p/w500' + movie.img,
         alt: `${movie.title} Movie Poster`,
-        class: 'w-full sm:min-w-28 rounded-md object-cover',
+        class: 'w-full sm:min-w-28 rounded-tr-3xl rounded-bl-3xl object-cover',
     });
 
     const favoriteButton = createElement('button', '', leftContent, {
@@ -65,9 +65,6 @@ const createElement = (tag, text, parent, attributes) => {
 }
 
 const setFavoriteButtonColor = (movie) => {
-    if (isFavorite(movie)) {
-        return 'text-red-700 hover:text-red-700 active:text-slate-400';
-    } else {
-        return 'text-slate-700 hover:text-red-700 active:text-red-400';
-    }
+    if (isFavorite(movie)) return 'text-red-700 hover:text-red-700 active:text-slate-400';
+    else return 'text-slate-700 hover:text-red-700 active:text-red-400';
 }
