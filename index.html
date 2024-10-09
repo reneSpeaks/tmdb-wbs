@@ -11,22 +11,19 @@
 	<script src="https://cdn.tailwindcss.com"></script> <!-- TAILWIND CSS CDN -->
 
 	<!-- FONT AWESOME CDN INCLUDE -->
-	<!--suppress JSUnresolvedLibraryURL -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
 
 	<!-- MATERIAL UI CDN INCLUDE -->
-	<!--suppress JSUnresolvedLibraryURL -->
 	<link rel="stylesheet" href="https://unpkg.com/@material-tailwind/html@latest/styles/material-tailwind.css" />
-	<!--suppress JSUnresolvedLibraryURL -->
 	<script src="https://unpkg.com/@material-tailwind/html@latest/scripts/script-name.js"></script>
 </head>
 <body>
 
-<header class="flex flex-col items-center gap-8 p-8">
+<header class="flex flex-col items-center gap-8 p-8 mb-4">
 	<nav id="navigation" class="block w-full max-w-screen-lg px-4 py-2 mx-auto bg-white bg-opacity-90 sticky top-3 shadow lg:px-8 lg:py-3 backdrop-blur-lg backdrop-saturate-150 z-[9999]">
 		<div class="container flex flex-wrap items-center justify-between mx-auto text-slate-800">
-			<a href="#" class="mr-4 block cursor-pointer py-1.5 text-base text-slate-800 font-semibold"> Delicious
-				Apple </a>
+			<a href="#" class="mr-4 block cursor-pointer py-1.5 text-base text-slate-800 font-semibold">
+				<i class="fa-solid fa-apple-whole"></i> Delicious Apple </a>
 			<div class="hidden lg:block">
 				<ul class="flex flex-col gap-2 mt-2 mb-4 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
 					<li class="flex items-center p-1 text-sm gap-x-2 text-slate-600">
@@ -62,34 +59,8 @@
 	</div>
 </header>
 
-<main>
-	<!-- SECTION FOR MOVIES -->
-	<section id="movies" class="max-w-screen w-full max-h-screen flex flex-row items-center gap-8 flex-wrap p-8">
-
-		<div class="card relative flex flex-col sm:flex-row bg-white shadow-sm border border-slate-200 rounded-lg w-96">
-			<div class="m-2.5 overflow-hidden flex items-start flex-col gap-2">
-				<img class="w-full rounded-md object-cover" src="https://www.themoviedb.org/t/p/w500/ec6uFqAgasAJKJ2IQsT5rIYkGHz.jpg" alt="The Joker Movie Poster" />
-				<button class="rounded-md bg-slate-800 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none ml-2" type="button">Favorite</button>
-			</div>
-			<div class="flex flex-col relative">
-				<div class="p-4">
-					<h5 class="sm:absolute mb-2 text-slate-800 text-xl font-semibold sm:-top-7">
-						The Joker
-					</h5>
-					<p class="text-slate-600 leading-normal font-light">
-						Gotham City im Jahr 1981: Der mental instabile Arthur Fleck führt wahrlich nicht das Leben, von
-						dem man träumt: Vollgepumpt mit Medikamenten geht er seiner Arbeit als ...
-					</p>
-				</div>
-				<div class="mx-3 border-t border-slate-200 pb-3 pt-2 px-1">
-    			<span class="text-sm text-slate-600 font-medium">
-   	    			User Rating: 8.052
-    			</span>
-				</div>
-			</div>
-		</div>
-
-	</section>
+<main class="flex justify-center">
+	<section id="movies" class="max-w-screen-xl w-full flex flex-row justify-center gap-10 mb-10 flex-wrap"></section>
 </main>
 
 <footer>
