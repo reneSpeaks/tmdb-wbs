@@ -1,11 +1,12 @@
 // API CALL FOR POPULAR MOVIES
 
 export class Movie {
-    constructor(id, title, img, description) {
+    constructor(id, title, img, description, rating) {
         this.id = id;
         this.title = title;
         this.img = img;
         this.description = description;
+        this.rating = rating;
     }
 }
 
@@ -25,7 +26,7 @@ export const getMovies = async () => {
     const data = await response.json();
 
     for (const movie of data.results) {
-        let newMovie = new Movie(movie.id, movie.title, movie.poster_path, movie.overview);
+        let newMovie = new Movie(movie.id, movie.title, movie.poster_path, movie.overview, movie.vote_average);
         movies.push(newMovie);
     }
 
