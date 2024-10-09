@@ -10,7 +10,7 @@ export class Movie {
     }
 }
 
-export const getMovies = async () => {
+export const getMovies = async (query) => {
     let movies = [];
 
     const options = {
@@ -21,7 +21,7 @@ export const getMovies = async () => {
         }
     };
 
-    const response = await fetch('https://api.themoviedb.org/3/movie/popular?language=en-US&page=1', options);
+    const response = await fetch(query, options);
     if (!response.ok) throw new Error('Something went wrong');
     const data = await response.json();
 
