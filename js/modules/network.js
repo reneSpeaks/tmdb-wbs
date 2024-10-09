@@ -1,8 +1,5 @@
 // API CALL FOR POPULAR MOVIES
 
-// CALL FOR SEARCH QUERY: https://api.themoviedb.org/3/search/movie?query=${search}&include_adult=false&language=en-US&page=1
-// CALL FOR POPULAR MOVIES: https://api.themoviedb.org/3/movie/popular?language=en-US&page=1
-
 export class Movie {
     constructor(id, title, img, description) {
         this.id = id;
@@ -12,7 +9,7 @@ export class Movie {
     }
 }
 
-export const getMovies = async (query) => {
+export const getMovies = async () => {
     let movies = [];
 
     const options = {
@@ -23,7 +20,7 @@ export const getMovies = async (query) => {
         }
     };
 
-    const response = await fetch(query, options);
+    const response = await fetch('https://api.themoviedb.org/3/movie/popular?language=en-US&page=1', options);
     if (!response.ok) throw new Error('Something went wrong');
     const data = await response.json();
 
