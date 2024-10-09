@@ -6,11 +6,11 @@ const movieSection = document.querySelector('#movies');
 
 export function addMovieCard(movie) {
     const cardWrapper = createElement('div', '', movieSection, {
-        class: 'card-wrapper relative flex flex-col sm:grid sm:grid-cols-2 bg-white shadow-sm border border-slate-200 rounded-lg sm:h-full sm:max-h-80 w-full max-w-96',
+        class: 'relative flex flex-col sm:grid sm:grid-cols-2 bg-white shadow-sm border border-slate-200 rounded-lg sm:h-full sm:max-h-80 w-full max-w-96',
     });
 
     const leftContent = createElement('div', '', cardWrapper, {
-        class: 'relative m-2.5 overflow-hidden flex items-start flex-col gap-1',
+        class: 'flex items-start flex-col gap-1 m-2.5',
     });
 
     const rightContent = createElement('div', '', cardWrapper, {
@@ -38,19 +38,15 @@ export function addMovieCard(movie) {
     });
 
     const cardHeader = createElement('h5', movie.title, rightContent, {
-        class: 'mb-2 text-slate-800 text-xl font-semibold sm:absolute sm:w-96 sm:-top-7 sm:-left-full',
+        class: 'sm:absolute mb-2 sm:-top-7 sm:-left-full sm:w-96 text-slate-800 text-xl font-semibold',
     });
 
     const cardDescription = createElement('p', movie.description, rightContent, {
        class: 'h-full max-h-60 text-slate-600 leading-normal font-light overflow-hidden',
     });
 
-    const cardRating = createElement('div', '', rightContent, {
-        class: 'sm:absolute sm:bottom-0 sm:w-3/4 mx-3 border-t border-slate-200 pb-3 pt-2 px-1',
-    });
-
-    const ratingSpan = createElement('span', `User Rating: ${movie.rating}`, cardRating, {
-        class: 'text-sm text-slate-600 font-medium',
+    const cardRating = createElement('div', `User Rating: ${movie.rating}`, rightContent, {
+        class: 'sm:absolute sm:bottom-0 sm:w-3/4 mx-3 mt-2 border-t border-slate-200 pb-3 pt-2 px-1 text-sm text-slate-600 font-medium',
     });
 }
 
