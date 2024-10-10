@@ -6,7 +6,3 @@
 node_modules/*
 dist/
 .parcel-cache/
-
-# Package Files
-package-lock.json
-package.json
