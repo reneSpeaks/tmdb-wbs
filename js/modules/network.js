@@ -50,4 +50,3 @@ export const getMovies = async (query) => {
         console.log(error);
     }
 }
-
