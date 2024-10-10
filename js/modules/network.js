@@ -1,4 +1,8 @@
-// API CALL FOR POPULAR MOVIES
+// API CALL FOR MOVIES
+// SEARCH QUERY: https://api.themoviedb.org/3/search/movie?query=${searchQuery}&include_adult=false&language=en-US&page=1
+// POPULAR MOVIES: https://api.themoviedb.org/3/movie/popular?language=en-US&page=1
+
+import {addMovieCard} from "./ui";
 
 export class Movie {
     constructor(id, title, img, description, rating) {
@@ -7,6 +11,27 @@ export class Movie {
         this.img = img;
         this.description = description;
         this.rating = rating;
+    }
+}
+
+export const searchMovies = async () => {
+    const moviesSection = document.querySelector('#movies')
+    const searchInput = document.querySelector('#search-input');
+
+    const searchQuery = searchInput.value.trim();
+    let movies;
+
+    // TODO: BETTER ERROR HANDLING AND INPUT VALIDATION
+    if (searchQuery === '') {
+        movies = await getMovies('https://api.themoviedb.org/3/movie/popular?language=en-US&page=1');
+    } else {
+        movies = await getMovies(`https://api.themoviedb.org/3/search/movie?query=${searchQuery}&include_adult=false&language=en-US&page=1`);
+    }
+    moviesSection.innerHTML = '';
+
+
+    for (let movie of movies) {
+        addMovieCard(movie);
     }
 }
 

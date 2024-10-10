@@ -36,8 +36,8 @@
 		</div>
 	</nav>
 
-	<div id="search" class="w-full max-w-sm min-w-[200px]">
-		<div class="relative flex items-center">
+	<div id="search" class="w-full max-w-sm min-w-[200px] flex flex-col items-center gap-4">
+		<div class="relative flex items-center w-full">
 			<input id="search-input" class="w-full bg-transparent placeholder:text-slate-400 text-slate-700 dark:text-slate-400 text-sm border border-slate-200 rounded-md pl-10 pr-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow" placeholder="Search for Movies..." />
 			<label for="search-input"><i class="fa-solid fa-magnifying-glass absolute w-5 h-5 top-2.5 left-2.5 text-slate-600"></i></label>
 
@@ -45,6 +45,9 @@
 				Search
 			</button>
 		</div>
+
+		<label for="theme"><input id="theme" type="checkbox" value="light" class="toggle theme-controller" /></label>
+
 	</div>
 </header>
 

@@ -1,10 +1,9 @@
-import {getMovies} from "./modules/network.js";
-import {addMovieCard} from "./modules/ui.js";
+import {searchMovies} from "./modules/network.js";
 
 window.onload = async () => {
-    const movies = await getMovies('https://api.themoviedb.org/3/movie/popular?language=en-US&page=1');
+    const searchButton = document.querySelector("#search button");
+    searchButton.addEventListener('click', searchMovies);
 
-    for (let movie of movies) {
-        addMovieCard(movie);
-    }
+    await searchMovies();
 }
+
