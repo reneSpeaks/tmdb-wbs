@@ -44,6 +44,7 @@ export function addMovieCard(movie) {
 
     const indicatorButton = createElement('button', '', cardOptions, {
         class: `hover:scale-110 transition-all text-lg px-4 pt-2 ${setNoteIndicatorColor(movie)}`,
+        onclick: `movie_modal${movie.id}.showModal()`,
     });
     const indicatorIcon = createElement('i', '', indicatorButton, {
         class: 'fa-solid fa-pen-to-square',
@@ -51,7 +52,31 @@ export function addMovieCard(movie) {
     indicatorButton.addEventListener('click', () => {
         const personalNote = editPersonalNote(movie);
         indicatorButton.className = `hover:scale-110 transition-all text-lg px-4 pt-2 ${setNoteIndicatorColor(movie)}`;
-    })
+    });
+/*
+    const modalDialog = createElement('dialog', '', leftContent, {
+        class: 'modal',
+        id: `movie_modal${movie.id}`,
+    });
+    const modalBox = createElement('div', '', modalDialog, {
+        class: 'modal-box',
+    });
+    const modalHeader = createElement('h3', 'Personal Note', modalBox, {
+        class: 'text-lg font-bold',
+    });
+    const modalParagraph = createElement('p', 'Press ESC key or click the button below to close', modalBox, {
+        class: 'py-4',
+    });
+    const modalAction = createElement('div', '', modalBox, {
+        class: 'modal-action',
+    });
+    const modalForm = createElement('form', '', modalAction, {
+        method: 'dialog',
+    });
+    const modalCloseButton = createElement('button', 'Close', modalForm, {
+        class: 'btn',
+    });
+    */
 }
 
 const createElement = (tag, text, parent, attributes) => {
