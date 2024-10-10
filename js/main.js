@@ -1,4 +1,4 @@
-import {getMovies} from "./modules/network.js";
+import {getMovies, searchMovies} from "./modules/network.js";
 import {addMovieCard} from "./modules/ui.js";
 
 window.onload = async () => {
@@ -7,4 +7,8 @@ window.onload = async () => {
     for (let movie of movies) {
         addMovieCard(movie);
     }
+
+    const searchButton = document.querySelector("#search button");
+    searchButton.addEventListener('click', searchMovies);
 }
+
