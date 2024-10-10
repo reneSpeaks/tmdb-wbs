@@ -2,9 +2,11 @@
 
 import {isFavorite, toggleFavorite} from "./storage.js";
 
-const movieSection = document.querySelector('#movies');
+// TODO: DARK MODE NEEDS TO BE SET UP PROPERLY
 
 export function addMovieCard(movie) {
+    const movieSection = document.querySelector('#movies');
+
     const cardWrapper = createElement('div', '', movieSection, {
         class: 'relative flex flex-col sm:grid sm:grid-cols-2 bg-white shadow-sm border border-slate-200 rounded-tr-3xl rounded-bl-3xl sm:h-full sm:max-h-80 w-full max-w-96',
     });
@@ -38,7 +40,7 @@ export function addMovieCard(movie) {
     });
 
     const cardHeader = createElement('h5', movie.title, rightContent, {
-        class: 'sm:absolute mb-2 sm:-top-7 sm:-left-full sm:w-96 text-slate-800 text-xl font-semibold',
+        class: 'sm:absolute mb-2 sm:-top-7 sm:-left-full sm:w-96 text-slate-800 dark:text-slate-500 text-xl font-semibold',
     });
 
     const cardDescription = createElement('p', movie.description, rightContent, {
