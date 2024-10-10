@@ -3,16 +3,7 @@
 // POPULAR MOVIES: https://api.themoviedb.org/3/movie/popular?language=en-US&page=1
 
 import {addMovieCard} from "./ui.js";
-
-export class Movie {
-    constructor(id, title, img, description, rating) {
-        this.id = id;
-        this.title = title;
-        this.img = img;
-        this.description = description;
-        this.rating = rating;
-    }
-}
+import {Movie} from "./objects.js";
 
 export const searchMovies = async () => {
     const moviesSection = document.querySelector('#movies')

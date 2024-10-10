@@ -1,6 +1,6 @@
 {
   "name": "tmdb-wbs",
-  "source": "index.html",
+  "source": ["index.html", "journal.html"],
   "scripts": {
     "dev": "parcel",
     "build": "parcel build"
