@@ -7,47 +7,41 @@
 	<title>THE Movie Database - INDEX</title>
 
 	<!-- TAILWIND CSS INCLUDE AND THEME SETUP -->
-	<link rel="stylesheet" href="css/styles.css" /> <!-- TAILWIND CSS OUTPUT FILE -->
 	<script src="https://cdn.tailwindcss.com"></script> <!-- TAILWIND CSS CDN -->
 
 	<!-- FONT AWESOME CDN INCLUDE -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
 
-	<!-- MATERIAL UI CDN INCLUDE -->
-	<link rel="stylesheet" href="https://unpkg.com/@material-tailwind/html@latest/styles/material-tailwind.css" />
-	<script src="https://unpkg.com/@material-tailwind/html@latest/scripts/script-name.js"></script>
+	<!-- DAISY UI CDN INCLUDE -->
+	<link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.13/dist/full.min.css" rel="stylesheet" type="text/css" />
+
 </head>
 <body>
 
 <header class="flex flex-col items-center gap-8 p-8 mb-4">
-	<nav id="navigation" class="block w-full max-w-screen-lg px-4 py-2 mx-auto bg-white bg-opacity-90 top-3 shadow lg:px-8 lg:py-3 backdrop-blur-lg backdrop-saturate-150">
-		<div class="flex flex-wrap items-center justify-between mx-auto text-slate-800">
-			<a href="#" class="flex gap-4 items-center mr-4 cursor-pointer py-1.5 text-base text-slate-800 font-semibold">
-				<i class="fa-solid fa-apple-whole text-xl"></i> Delicious Apple</a>
-			<div class="hidden lg:block">
-				<ul class="flex flex-col gap-2 mt-2 mb-4 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
-					<li class="flex items-center p-1 text-sm gap-x-2 text-slate-600">
-						<a href="#" class="flex items-center"> Home </a>
-					</li>
-					<li class="flex items-center p-1 text-sm gap-x-2 text-slate-600">
-						<a href="#" class="flex items-center"> Journal </a>
-					</li>
+	<nav class="navbar bg-base-100 max-w-screen-xl px-0">
+		<div class="navbar-start">
+			<a class="btn btn-ghost pl-0 text-xl"><i class="fa-solid fa-apple-whole text-xl"></i> Delectable Apricot</a>
+		</div>
+		<div class="navbar-end">
+			<div class="dropdown dropdown-end">
+				<div tabindex="0" role="button" class="btn btn-ghost btn-circle justify-end">
+					<i class="text-xl fa-solid fa-burger"></i>
+				</div>
+				<ul tabindex="0" class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
+					<li><a href="index.html">Homepage</a></li>
+					<li><a href="journal.html">Journal</a></li>
 				</ul>
 			</div>
-			<button class="relative ml-auto h-6 max-h-[40px] w-6 max-w-[40px] select-none rounded-lg text-center align-middle text-xs font-medium uppercase text-inherit transition-all hover:bg-transparent focus:bg-transparent active:bg-transparent disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none lg:hidden" type="button">
-				<span class="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
-					<i class="text-xl fa-solid fa-burger"></i>
-				</span>
-			</button>
 		</div>
 	</nav>
 
 	<div id="search" class="w-full max-w-sm min-w-[200px]">
 		<div class="relative flex items-center">
-			<input id="search-input" class="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md pl-10 pr-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow" placeholder="Search for Movies..." />
+			<input id="search-input" class="w-full bg-transparent placeholder:text-slate-400 text-slate-700 dark:text-slate-400 text-sm border border-slate-200 rounded-md pl-10 pr-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow" placeholder="Search for Movies..." />
 			<label for="search-input"><i class="fa-solid fa-magnifying-glass absolute w-5 h-5 top-2.5 left-2.5 text-slate-600"></i></label>
 
-			<button class="rounded-md bg-slate-800 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none ml-2" type="button">
+			<button class="rounded-md bg-slate-800 dark:bg-slate-700 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-slate-500 focus:shadow-none active:bg-slate-500 hover:bg-slate-500 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none ml-2" type="button">
 				Search
 			</button>
 		</div>
@@ -58,8 +52,10 @@
 	<section id="movies" class="max-w-screen-xl w-full flex flex-row justify-center gap-10 mb-10 mx-8 flex-wrap"></section>
 </main>
 
-<footer class="w-full max-w-screen object-center text-center text-slate-700">
-	&#169; 2024 Delectable Apricot
+<footer class="footer footer-center bg-base-300 text-base-content p-4">
+	<aside>
+		<p>Copyright &#169; 2024 - All right reserved by Delectable Apricot</p>
+	</aside>
 </footer>
 
 <!-- INCLUDE MAIN.JS FOR INDEX.HTML -->
