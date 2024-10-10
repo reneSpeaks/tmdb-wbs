@@ -1,39 +1,53 @@
 <!doctype html>
 <html lang="en">
 <head>
-
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title>THE Movie Database - JOURNAL</title>
+	<title>THE Movie Database - INDEX</title>
 
-	<!-- CSS SETUP -->
-	<link rel="stylesheet" href="css/styles.css" />
 	<!-- TAILWIND CSS INCLUDE AND THEME SETUP -->
-	<script src="https://cdn.tailwindcss.com"></script>
-
-	<!-- JOURNAL JS INCLUDE FOR INDEX HTML -->
-	<script src="js/journal.js"></script>
+	<script src="https://cdn.tailwindcss.com"></script> <!-- TAILWIND CSS CDN -->
 
 	<!-- FONT AWESOME CDN INCLUDE -->
-	<!--suppress JSUnresolvedLibraryURL -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+
+	<!-- DAISY UI CDN INCLUDE -->
+	<link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.13/dist/full.min.css" rel="stylesheet" type="text/css" />
+
 </head>
 <body>
 
-<header>
-	<nav>
-		<img src="img/tmdb_logo.svg" alt="The Movie Database Logo">
+<header class="flex flex-col items-center gap-8 p-8 mb-4">
+	<nav class="navbar bg-base-100 max-w-screen-xl px-0">
+		<div class="navbar-start">
+			<a class="btn btn-ghost text-xl"><i class="fa-solid fa-apple-whole text-xl"></i> Delectable Apricot</a>
+		</div>
+		<div class="navbar-end">
+			<div class="dropdown dropdown-end">
+				<div tabindex="0" role="button" class="btn btn-ghost justify-end">
+					<i class="text-xl fa-solid fa-burger"></i>
+				</div>
+				<ul tabindex="0" class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
+					<li><a href="index.html">Homepage</a></li>
+					<li><a href="journal.html">Journal</a></li>
+				</ul>
+			</div>
+		</div>
 	</nav>
 </header>
 
-<main>
-	<section></section>
+<main class="flex justify-center">
+	<section id="movies" class="max-w-screen-xl w-full flex flex-row justify-center gap-10 mb-10 mx-8 flex-wrap"></section>
 </main>
 
-<footer>
-	<address></address>
+<footer class="footer footer-center bg-base-300 text-base-content p-4">
+	<aside>
+		<p>Copyright &#169; 2024 - All right reserved by Delectable Apricot</p>
+	</aside>
 </footer>
 
+<!-- INCLUDE JOURNAL.JS FOR JOURNAL.HTML -->
+<script type="module" src="js/journal.js"></script>
 </body>
 </html>

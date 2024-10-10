@@ -17,3 +17,9 @@ export const isFavorite = (movie) => {
     const found = favorites.find((item) => item.id === movie.id);
     return !!found;
 }
+
+export const getFavorites = () => {
+    const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+    console.log(favorites);
+    return favorites;
+}
