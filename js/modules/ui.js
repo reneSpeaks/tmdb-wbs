@@ -1,6 +1,6 @@
 // FUNCTIONS RELATED TO CREATING AND MANIPULATING DOM ELEMENTS
 
-import {addPersonalNote, hasPersonalNote, isFavorite, toggleFavorite} from "./storage.js";
+import {editPersonalNote, hasPersonalNote, isFavorite, toggleFavorite} from "./storage.js";
 
 export function addMovieCard(movie) {
     const movieSection = document.querySelector('#movies');
@@ -21,33 +21,17 @@ export function addMovieCard(movie) {
     const cardOptions = createElement('div', '', leftContent, {
         class: 'flex flex-row',
     })
-
     const favoriteButton = createElement('button', '', cardOptions, {
         type: 'button',
         class: `px-4 pt-2 text-lg transition-all hover:scale-110 ${setFavoriteButtonColor(movie)}`,
     });
-
     favoriteButton.addEventListener('click', () => {
         toggleFavorite(movie);
         favoriteButton.className = `px-4 pt-2 text-lg transition-all hover:scale-110 ${setFavoriteButtonColor(movie)}`;
     });
-
     const favoriteIcon = createElement('i', '', favoriteButton, {
         class: 'fa-solid fa-heart',
     });
-    const indicatorButton = createElement('button', '', cardOptions, {
-        class: `hover:scale-110 transition-all text-lg px-4 pt-2 ${setNoteIndicatorColor(movie)}`,
-    });
-    const indicatorIcon = createElement('i', '', indicatorButton, {
-        class: 'fa-solid fa-pen-to-square',
-    });
-
-    indicatorButton.addEventListener('click', () => {
-        // TODO: CREATE POPUP TO EDIT, ADD OR DELETE PERSONAL NOTE
-        addPersonalNote(movie);
-        indicatorButton.className = `hover:scale-110 transition-all text-lg px-4 pt-2 ${setNoteIndicatorColor(movie)}`;
-    })
-
     const cardHeader = createElement('h5', movie.title, rightContent, {
         class: 'sm:absolute mb-2 sm:-top-7 sm:-left-full sm:w-96 text-slate-800 dark:text-slate-500 text-xl font-semibold',
     });
@@ -57,6 +41,18 @@ export function addMovieCard(movie) {
     const cardRating = createElement('div', `User Rating: ${movie.rating}`, rightContent, {
         class: 'sm:absolute sm:bottom-0 sm:w-3/4 mx-3 mt-2 border-t border-slate-200 pb-3 pt-2 px-1 text-sm text-slate-600 font-medium',
     });
+
+    const indicatorButton = createElement('button', '', cardOptions, {
+        class: `hover:scale-110 transition-all text-lg px-4 pt-2 ${setNoteIndicatorColor(movie)}`,
+    });
+    const indicatorIcon = createElement('i', '', indicatorButton, {
+        class: 'fa-solid fa-pen-to-square',
+    });
+    indicatorButton.addEventListener('click', () => {
+        // TODO: CREATE POPUP TO EDIT, ADD OR DELETE PERSONAL NOTE
+        const personalNote = editPersonalNote(movie);
+        indicatorButton.className = `hover:scale-110 transition-all text-lg px-4 pt-2 ${setNoteIndicatorColor(movie)}`;
+    })
 }
 
 const createElement = (tag, text, parent, attributes) => {
