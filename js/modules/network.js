@@ -19,16 +19,16 @@ export const searchMovies = async () => {
     const searchInput = document.querySelector("#search-input");
 
     const searchQuery = searchInput.value.trim();
-    let movies = [];
+    let movies;
 
     // TODO: BETTER ERROR HANDLING AND INPUT VALIDATION
     if (searchQuery === '') {
-        alert("Displaying Popular Movies.");
         movies = await getMovies('https://api.themoviedb.org/3/movie/popular?language=en-US&page=1');
     } else {
         movies = await getMovies(`https://api.themoviedb.org/3/search/movie?query=${searchQuery}&include_adult=false&language=en-US&page=1`);
     }
     moviesSection.innerHTML = '';
+
 
     for (let movie of movies) {
         addMovieCard(movie);
