@@ -20,7 +20,6 @@ export const searchMovies = async () => {
     }
     moviesSection.innerHTML = '';
 
-
     for (let movie of movies) {
         addMovieCard(movie);
     }

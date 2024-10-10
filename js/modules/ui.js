@@ -49,7 +49,6 @@ export function addMovieCard(movie) {
         class: 'fa-solid fa-pen-to-square',
     });
     indicatorButton.addEventListener('click', () => {
-        // TODO: CREATE POPUP TO EDIT, ADD OR DELETE PERSONAL NOTE
         const personalNote = editPersonalNote(movie);
         indicatorButton.className = `hover:scale-110 transition-all text-lg px-4 pt-2 ${setNoteIndicatorColor(movie)}`;
     })
