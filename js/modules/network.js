@@ -16,7 +16,7 @@ export class Movie {
 
 export const searchMovies = async () => {
     const moviesSection = document.querySelector('#movies')
-    const searchInput = document.querySelector("#search-input");
+    const searchInput = document.querySelector('#search-input');
 
     const searchQuery = searchInput.value.trim();
     let movies;

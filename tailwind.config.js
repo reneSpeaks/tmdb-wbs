@@ -5,7 +5,6 @@ module.exports = {
         './index.html',
         './journal.html',
     ],
-    darkMode: false,
     theme: {
         extend: {}
     },
