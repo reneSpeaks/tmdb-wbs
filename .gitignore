@@ -2,9 +2,11 @@
 .vscode/*
 .idea/*
 
-# Node Folder
+# Node Folder & Parcel Folders
 node_modules/*
+dist/
+.parcel-cache/
 
-# Package Files after Tailwind Install
+# Package Files
 package-lock.json
 package.json
