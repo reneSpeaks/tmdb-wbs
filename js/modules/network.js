@@ -2,7 +2,7 @@
 // SEARCH QUERY: https://api.themoviedb.org/3/search/movie?query=${searchQuery}&include_adult=false&language=en-US&page=1
 // POPULAR MOVIES: https://api.themoviedb.org/3/movie/popular?language=en-US&page=1
 
-import {addMovieCard} from "./ui";
+import {addMovieCard} from "./ui.js";
 
 export class Movie {
     constructor(id, title, img, description, rating) {
