@@ -1,7 +1,7 @@
 // FUNCTIONS RELATED TO: LOCALSTORAGE OPERATIONS
 
 export const toggleFavorite = (movie) => {
-    const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+    const favorites = getFavorites();
 
     if (isFavorite(movie)) {
         const newFavorites = favorites.filter((item) => item.id !== movie.id);
@@ -13,13 +13,11 @@ export const toggleFavorite = (movie) => {
 }
 
 export const isFavorite = (movie) => {
-    const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+    const favorites = getFavorites();
     const found = favorites.find((item) => item.id === movie.id);
     return !!found;
 }
 
 export const getFavorites = () => {
-    const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
-    console.log(favorites);
-    return favorites;
+    return JSON.parse(localStorage.getItem("favorites")) || [];
 }
