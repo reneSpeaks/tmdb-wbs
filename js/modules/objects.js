@@ -11,11 +11,11 @@ export class Movie {
 export class PersonalNote {
     id;
     movieId;
-    noteText;
+    text;
 
-    constructor(movieId, noteText) {
+    constructor(movieId, text) {
         this.id = crypto.randomUUID();
         this.movieId = movieId;
-        this.noteText = noteText;
+        this.text = text;
     }
 }
