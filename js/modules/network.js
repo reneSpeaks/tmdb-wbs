@@ -12,7 +12,6 @@ export const searchMovies = async () => {
     const searchQuery = searchInput.value.trim();
     let movies;
 
-    // TODO: BETTER ERROR HANDLING AND INPUT VALIDATION
     if (searchQuery === '') {
         movies = await getMovies('https://api.themoviedb.org/3/movie/popular?language=en-US&page=1');
     } else {
@@ -25,7 +24,7 @@ export const searchMovies = async () => {
     }
 }
 
-export const getMovies = async (query) => {
+const getMovies = async (query) => {
     try {
         let movies = [];
 
@@ -39,6 +38,8 @@ export const getMovies = async (query) => {
 
         const response = await fetch(query, options);
         const data = await response.json();
+
+        console.log(data.total_results);
 
         for (const movie of data.results) {
             let newMovie = new Movie(movie.id, movie.title, movie.poster_path, movie.overview, movie.vote_average);
