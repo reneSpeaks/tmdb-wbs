@@ -5,6 +5,6 @@ window.onload = async () => {
     const movies = getFavorites();
 
     for (let movie of movies) {
-        addMovieCard(movie);
+        addMovieCard(movie, 'journal');
     }
 }

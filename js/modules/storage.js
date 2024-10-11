@@ -63,9 +63,6 @@ export const addPersonalNote = (movie, text = "") => {
 export const getPersonalNote = (movie) => {
     const notes = getPersonalNotes();
     const note = notes.find((item) => item.movieId === movie.id);
-
-    console.log(note);
-
     if (!note) return '';
     else return note.text;
 }

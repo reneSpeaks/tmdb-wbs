@@ -2,7 +2,7 @@
 
 import {editPersonalNote, getPersonalNote, hasPersonalNote, isFavorite, toggleFavorite} from "./storage.js";
 
-export function addMovieCard(movie) {
+export function addMovieCard(movie, section = '') {
     const movieSection = document.querySelector('#movies');
     const cardWrapper = createElement('div', '', movieSection, {
         class: 'relative flex flex-col sm:grid sm:grid-cols-2 bg-white shadow-sm border border-slate-200 rounded-tr-3xl rounded-bl-3xl sm:h-full sm:max-h-80 w-full max-w-96',
@@ -42,42 +42,44 @@ export function addMovieCard(movie) {
         class: 'sm:absolute sm:bottom-0 sm:w-3/4 mx-3 mt-2 border-t border-slate-200 pb-3 pt-2 px-1 text-sm text-slate-600 font-medium',
     });
 
-    const personalNotesButton = createElement('button', '', cardOptions, {
-        class: `hover:scale-110 transition-all text-lg px-4 pt-2 ${setNoteIndicatorColor(movie)}`,
-        onclick: `movie_modal${movie.id}.showModal()`,
-    });
-    const personalNotesIcon = createElement('i', '', personalNotesButton, {
-        class: 'fa-solid fa-pen-to-square',
-    });
-    const modalDialog = createElement('dialog', '', leftContent, {
-        class: 'modal',
-        id: `movie_modal${movie.id}`,
-    });
-    const modalBox = createElement('div', '', modalDialog, {
-        class: 'modal-box',
-    });
-    const modalHeader = createElement('h3', 'Personal Note', modalBox, {
-        class: 'text-lg font-bold',
-    });
-    const modalParagraph = createElement('p', getPersonalNote(movie), modalBox, {
-        class: 'py-4',
-    });
-    const modalAction = createElement('div', '', modalBox, {
-        class: 'modal-action',
-    });
-    const modalEditButton = createElement('button', 'Edit', modalAction, {
-        class: 'btn',
-    })
-    const modalForm = createElement('form', '', modalAction, {
-        method: 'dialog',
-    });
-    const modalCloseButton = createElement('button', 'Close', modalForm, {
-        class: 'btn',
-    });
-    modalEditButton.addEventListener('click', () => {
-        modalParagraph.textContent = editPersonalNote(movie);
-        personalNotesButton.className = `hover:scale-110 transition-all text-lg px-4 pt-2 ${setNoteIndicatorColor(movie)}`;
-    });
+    if (section === 'journal') {
+        const personalNotesButton = createElement('button', '', cardOptions, {
+            class: `hover:scale-110 transition-all text-lg px-4 pt-2 ${setNoteIndicatorColor(movie)}`,
+            onclick: `movie_modal${movie.id}.showModal()`,
+        });
+        const personalNotesIcon = createElement('i', '', personalNotesButton, {
+            class: 'fa-solid fa-pen-to-square',
+        });
+        const modalDialog = createElement('dialog', '', leftContent, {
+            class: 'modal',
+            id: `movie_modal${movie.id}`,
+        });
+        const modalBox = createElement('div', '', modalDialog, {
+            class: 'modal-box',
+        });
+        const modalHeader = createElement('h3', 'Personal Note', modalBox, {
+            class: 'text-lg font-bold',
+        });
+        const modalParagraph = createElement('p', getPersonalNote(movie), modalBox, {
+            class: 'py-4',
+        });
+        const modalAction = createElement('div', '', modalBox, {
+            class: 'modal-action',
+        });
+        const modalEditButton = createElement('button', 'Edit', modalAction, {
+            class: 'btn',
+        })
+        const modalForm = createElement('form', '', modalAction, {
+            method: 'dialog',
+        });
+        const modalCloseButton = createElement('button', 'Close', modalForm, {
+            class: 'btn',
+        });
+        modalEditButton.addEventListener('click', () => {
+            modalParagraph.textContent = editPersonalNote(movie);
+            personalNotesButton.className = `hover:scale-110 transition-all text-lg px-4 pt-2 ${setNoteIndicatorColor(movie)}`;
+        });
+    }
 }
 
 const createElement = (tag, text, parent, attributes) => {
