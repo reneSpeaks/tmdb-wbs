@@ -27,7 +27,12 @@ export function addMovieCard(movie, section = '') {
     });
     favoriteButton.addEventListener('click', () => {
         toggleFavorite(movie);
-        favoriteButton.className = `px-4 pt-2 text-lg transition-all hover:scale-110 ${setFavoriteButtonColor(movie)}`;
+
+        if (section === 'journal') {
+            movieSection.removeChild(cardWrapper);
+        } else {
+            favoriteButton.className = `px-4 pt-2 text-lg transition-all hover:scale-110 ${setFavoriteButtonColor(movie)}`;
+        }
     });
     const favoriteIcon = createElement('i', '', favoriteButton, {
         class: 'fa-solid fa-heart',

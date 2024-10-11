@@ -7,9 +7,8 @@ import {Movie} from "./objects.js";
 
 export const searchMovies = async () => {
     const moviesSection = document.querySelector('#movies')
-    const searchInput = document.querySelector('#search-input');
+    const searchQuery = document.querySelector('#search-input').value.trim();
 
-    const searchQuery = searchInput.value.trim();
     let movies;
 
     if (searchQuery === '') {
@@ -38,8 +37,6 @@ const getMovies = async (query) => {
 
         const response = await fetch(query, options);
         const data = await response.json();
-
-        console.log(data.total_results);
 
         for (const movie of data.results) {
             let newMovie = new Movie(movie.id, movie.title, movie.poster_path, movie.overview, movie.vote_average);
