@@ -1,6 +1,13 @@
 // FUNCTIONS RELATED TO CREATING AND MANIPULATING DOM ELEMENTS
 
-import {editPersonalNote, getPersonalNote, hasPersonalNote, isFavorite, toggleFavorite} from "./storage.js";
+import {
+    addPersonalNote,
+    editPersonalNote,
+    getPersonalNote,
+    hasPersonalNote,
+    isFavorite,
+    toggleFavorite
+} from "./storage.js";
 
 export function addMovieCard(movie, section = '') {
     const movieSection = document.querySelector('#movies');
@@ -84,15 +91,23 @@ export function addMovieCard(movie, section = '') {
         });
         const modalEditButton = createElement('button', 'Edit', modalAction, {
             class: 'btn',
-        })
+        });
         const modalForm = createElement('form', '', modalAction, {
             method: 'dialog',
+        });
+        const modalDeleteButton = createElement('button', 'Delete', modalForm, {
+            class: 'btn mr-2',
         });
         const modalCloseButton = createElement('button', 'Close', modalForm, {
             class: 'btn',
         });
         modalEditButton.addEventListener('click', () => {
             modalParagraph.textContent = editPersonalNote(movie);
+            personalNotesButton.className = `hover:scale-110 transition-all text-lg px-4 pt-2 ${setNoteIndicatorColor(movie)}`;
+        });
+        modalDeleteButton.addEventListener('click', () => {
+            addPersonalNote(movie);
+            modalParagraph.textContent = '';
             personalNotesButton.className = `hover:scale-110 transition-all text-lg px-4 pt-2 ${setNoteIndicatorColor(movie)}`;
         });
     }
