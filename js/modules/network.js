@@ -3,16 +3,7 @@
 // POPULAR MOVIES: https://api.themoviedb.org/3/movie/popular?language=en-US&page=1
 
 import {addMovieCard} from "./ui.js";
-
-export class Movie {
-    constructor(id, title, img, description, rating) {
-        this.id = id;
-        this.title = title;
-        this.img = img;
-        this.description = description;
-        this.rating = rating;
-    }
-}
+import {Movie} from "./objects.js";
 
 export const searchMovies = async () => {
     const moviesSection = document.querySelector('#movies')
@@ -21,7 +12,6 @@ export const searchMovies = async () => {
     const searchQuery = searchInput.value.trim();
     let movies;
 
-    // TODO: BETTER ERROR HANDLING AND INPUT VALIDATION
     if (searchQuery === '') {
         movies = await getMovies('https://api.themoviedb.org/3/movie/popular?language=en-US&page=1');
     } else {
@@ -29,13 +19,12 @@ export const searchMovies = async () => {
     }
     moviesSection.innerHTML = '';
 
-
     for (let movie of movies) {
         addMovieCard(movie);
     }
 }
 
-export const getMovies = async (query) => {
+const getMovies = async (query) => {
     try {
         let movies = [];
 
@@ -50,6 +39,8 @@ export const getMovies = async (query) => {
         const response = await fetch(query, options);
         const data = await response.json();
 
+        console.log(data.total_results);
+
         for (const movie of data.results) {
             let newMovie = new Movie(movie.id, movie.title, movie.poster_path, movie.overview, movie.vote_average);
             movies.push(newMovie);
@@ -60,4 +51,3 @@ export const getMovies = async (query) => {
         console.log(error);
     }
 }
-
