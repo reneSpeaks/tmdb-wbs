@@ -33,7 +33,7 @@ export function addMovieCard(movie, section = '') {
         class: 'fa-solid fa-heart',
     });
     const cardHeader = createElement('h5', movie.title, rightContent, {
-        class: 'sm:absolute mb-2 sm:-top-7 sm:-left-full sm:w-96 text-slate-800 dark:text-slate-500 text-xl font-semibold',
+        class: 'sm:absolute mb-2 sm:-top-7 sm:-left-full sm:w-96 text-slate-500 text-xl font-semibold',
     });
     const cardDescription = createElement('p', movie.description, rightContent, {
         class: 'h-full max-h-60 text-slate-600 leading-normal font-light overflow-hidden',
