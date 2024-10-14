@@ -20,22 +20,11 @@ export function addMovieCard(movie, section = '') {
     const rightContent = createElement('div', '', cardWrapper, {
         class: 'flex flex-col relative p-4',
     });
-
-    if (movie.img !== null) {
-        const cardImage = createElement('img', '', leftContent, {
-            src: 'https://www.themoviedb.org/t/p/w500' + movie.img,
-            alt: `${movie.title} Movie Poster`,
-            class: 'w-full sm:min-w-28 rounded-tr-3xl rounded-bl-3xl object-cover',
-        });
-    } else {
-        let image = require('../../img/500x750.png');
-        const cardImage = createElement('img', '', leftContent, {
-            src: image,
-            alt: `${movie.title} Movie Poster`,
-            class: 'w-full sm:min-w-28 rounded-tr-3xl rounded-bl-3xl object-cover',
-        });
-    }
-
+    const cardImage = createElement('img', '', leftContent, {
+        src: movie.img,
+        alt: `${movie.title} Movie Poster`,
+        class: 'w-full sm:min-w-28 rounded-tr-3xl rounded-bl-3xl object-cover',
+    });
     const cardOptions = createElement('div', '', leftContent, {
         class: 'flex flex-row',
     })
