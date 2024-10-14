@@ -2,6 +2,14 @@
 
 import {PersonalNote} from "./objects.js";
 
+export const getFavorites = () => {
+    return JSON.parse(localStorage.getItem('favorites')) || [];
+}
+
+const getPersonalNotes = () => {
+    return JSON.parse(localStorage.getItem('personalNotes')) || [];
+}
+
 export const isFavorite = (movie) => {
     const favorites = getFavorites();
     const found = favorites.find((item) => item.id === movie.id);
@@ -12,14 +20,6 @@ export const hasPersonalNote = (movie) => {
     const notes = getPersonalNotes();
     const found = notes.find((item) => item.movieId === movie.id);
     return !!found;
-}
-
-export const getFavorites = () => {
-    return JSON.parse(localStorage.getItem('favorites')) || [];
-}
-
-export const getPersonalNotes = () => {
-    return JSON.parse(localStorage.getItem('personalNotes')) || [];
 }
 
 export const toggleFavorite = (movie) => {
