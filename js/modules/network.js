@@ -6,7 +6,7 @@ import {addMovieCard} from "./ui.js";
 import {Movie} from "./objects.js";
 
 export const searchMovies = async () => {
-    const moviesSection = document.querySelector('#movies')
+    const moviesSection = document.querySelector('#movies');
     const searchQuery = document.querySelector('#search-input').value.trim();
 
     let movies;
@@ -21,7 +21,7 @@ export const searchMovies = async () => {
     for (let movie of movies) {
         addMovieCard(movie);
     }
-}
+};
 
 const getMovies = async (query) => {
     try {
@@ -31,11 +31,13 @@ const getMovies = async (query) => {
             method: 'GET',
             headers: {
                 accept: 'application/json',
-                Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxMDVjMzY2OWRlOGY1NDUwODNjYzgzYTZlOTNhY2RkNSIsIm5iZiI6MTcyODM5NDQ3Ny4xNDQzNTUsInN1YiI6IjY3MDNjN2QyNTA4ZGZhN2JhMzc5NTJhYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.X7jR77C4O3Ik904DIzUWB_rM12RZAFAo92NF80_tZJc'
-            }
+                Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxMDVjMzY2OWRlOGY1NDUwODNjYzgzYTZlOTNhY2RkNSIsIm5iZiI6MTcyODM5NDQ3Ny4xNDQzNTUsInN1YiI6IjY3MDNjN2QyNTA4ZGZhN2JhMzc5NTJhYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.X7jR77C4O3Ik904DIzUWB_rM12RZAFAo92NF80_tZJc',
+            },
         };
 
         const response = await fetch(query, options);
+        if (!response.ok) throw new Error(response.statusText);
+
         const data = await response.json();
 
         for (const movie of data.results) {
@@ -47,4 +49,4 @@ const getMovies = async (query) => {
     } catch (error) {
         console.log(error);
     }
-}
+};

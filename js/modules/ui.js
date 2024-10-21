@@ -4,11 +4,11 @@ import {
     addPersonalNote,
     editPersonalNote,
     getPersonalNote,
-    hasPersonalNote,
-    isFavorite,
-    toggleFavorite
+    isStored,
+    toggleFavorite,
 } from "./storage.js";
 
+// THE MOVIE CARD OBJECT ON BOTH THE INDEX.HTML & JOURNAL.HTML
 export function addMovieCard(movie, section = '') {
     const movieSection = document.querySelector('#movies');
     const cardWrapper = createElement('div', '', movieSection, {
@@ -30,7 +30,7 @@ export function addMovieCard(movie, section = '') {
     })
     const favoriteButton = createElement('button', '', cardOptions, {
         type: 'button',
-        class: `px-4 pt-2 text-lg transition-all hover:scale-110 ${setFavoriteButtonColor(movie)}`,
+        class: `px-4 pt-2 text-lg transition-all hover:scale-110 ${setColor('favorites', movie)}`,
     });
     favoriteButton.addEventListener('click', () => {
         toggleFavorite(movie);
@@ -38,7 +38,7 @@ export function addMovieCard(movie, section = '') {
         if (section === 'journal') {
             movieSection.removeChild(cardWrapper);
         } else {
-            favoriteButton.className = `px-4 pt-2 text-lg transition-all hover:scale-110 ${setFavoriteButtonColor(movie)}`;
+            favoriteButton.className = `px-4 pt-2 text-lg transition-all hover:scale-110 ${setColor('favorites', movie)}`;
         }
     });
     const favoriteIcon = createElement('i', '', favoriteButton, {
@@ -54,9 +54,10 @@ export function addMovieCard(movie, section = '') {
         class: 'sm:absolute sm:bottom-0 sm:w-3/4 mx-3 mt-2 border-t border-slate-200 pb-3 pt-2 px-1 text-sm text-slate-600 font-medium',
     });
 
+    // SECTION SPECIFIC RENDER
     if (section === 'journal') {
         const personalNotesButton = createElement('button', '', cardOptions, {
-            class: `hover:scale-110 transition-all text-lg px-4 pt-2 ${setNoteIndicatorColor(movie)}`,
+            class: `hover:scale-110 transition-all text-lg px-4 pt-2 ${setColor('personalNotes', movie)}`,
             onclick: `movie_modal${movie.id}.showModal()`,
         });
         const personalNotesIcon = createElement('i', '', personalNotesButton, {
@@ -92,16 +93,17 @@ export function addMovieCard(movie, section = '') {
         });
         modalEditButton.addEventListener('click', () => {
             modalParagraph.textContent = editPersonalNote(movie);
-            personalNotesButton.className = `hover:scale-110 transition-all text-lg px-4 pt-2 ${setNoteIndicatorColor(movie)}`;
+            personalNotesButton.className = `hover:scale-110 transition-all text-lg px-4 pt-2 ${setColor('personalNotes', movie)}`;
         });
         modalDeleteButton.addEventListener('click', () => {
             addPersonalNote(movie);
             modalParagraph.textContent = '';
-            personalNotesButton.className = `hover:scale-110 transition-all text-lg px-4 pt-2 ${setNoteIndicatorColor(movie)}`;
+            personalNotesButton.className = `hover:scale-110 transition-all text-lg px-4 pt-2 ${setColor('personalNotes', movie)}`;
         });
     }
 }
 
+// GENERIC FUNCTION TO CREATE DOM ELEMENTS USING BESSLANS EXAMPLE
 const createElement = (tag, text, parent, attributes) => {
     const element = document.createElement(tag);
     element.textContent = text;
@@ -116,12 +118,13 @@ const createElement = (tag, text, parent, attributes) => {
     return element;
 }
 
-const setNoteIndicatorColor = (movie) => {
-    if (hasPersonalNote(movie)) return 'text-red-700 hover:text-red-700 active:text-slate-400';
-    else return 'text-slate-700 hover:text-red-700 active:text-red-400';
-}
-
-const setFavoriteButtonColor = (movie) => {
-    if (isFavorite(movie)) return 'text-red-700 hover:text-red-700 active:text-slate-400';
-    else return 'text-slate-700 hover:text-red-700 active:text-red-400';
+// FUNCTION TO SET THE COLORS ACCORDING TO IF A MOVIE IS IN LOCAL STORAGE OR NOT
+const setColor = (storageName, storageItem) => {
+    if (storageName === 'favorites') {
+        if (isStored('favorites', storageItem)) return 'text-red-700 hover:text-red-700 active:text-slate-400';
+        else return 'text-slate-700 hover:text-red-700 active:text-red-400';
+    } else if (storageName === 'personalNotes') {
+        if (isStored('personalNotes', storageItem)) return 'text-red-700 hover:text-red-700 active:text-slate-400';
+        else return 'text-slate-700 hover:text-red-700 active:text-red-400';
+    }
 }

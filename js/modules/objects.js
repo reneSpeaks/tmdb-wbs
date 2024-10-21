@@ -1,3 +1,6 @@
+// CLASS OBJECT DEFINITIONS TO MAKE THE PAGE SCALABLE AND EASIER MANAGEABLE
+// CUTS DOWN CREATED OBJECT TO ONLY THE PIECES THAT ARE NEEDED FROM THE API CALL
+
 export class Movie {
     constructor(id, title, img, description, rating) {
         this.id = id;

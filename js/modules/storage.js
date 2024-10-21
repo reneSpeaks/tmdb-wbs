@@ -2,37 +2,31 @@
 
 import {PersonalNote} from "./objects.js";
 
-export const getFavorites = () => {
-    return JSON.parse(localStorage.getItem('favorites')) || [];
-}
+export const getLocalStorage = (storageName) => {
+    return JSON.parse(localStorage.getItem(storageName)) || [];
+};
 
-const getPersonalNotes = () => {
-    return JSON.parse(localStorage.getItem('personalNotes')) || [];
-}
+const saveLocalStorage = (storageName, storageArray) => {
+    localStorage.setItem(storageName, JSON.stringify(storageArray));
+};
 
-export const isFavorite = (movie) => {
-    const favorites = getFavorites();
-    const found = favorites.find((item) => item.id === movie.id);
-    return !!found;
-}
-
-export const hasPersonalNote = (movie) => {
-    const notes = getPersonalNotes();
-    const found = notes.find((item) => item.movieId === movie.id);
-    return !!found;
-}
+export const isStored = (storageName, storageItem) => {
+    const storage = getLocalStorage(storageName);
+    if (storageName === 'favorites') return storage.some((item) => item.id === storageItem.id);
+    else if (storageName === 'personalNotes') return storage.some((item) => item.movieId === storageItem.id);
+};
 
 export const toggleFavorite = (movie) => {
-    const favorites = getFavorites();
+    const favorites = getLocalStorage('favorites');
 
-    if (isFavorite(movie)) {
+    if (isStored('favorites', movie)) {
         const newFavorites = favorites.filter((item) => item.id !== movie.id);
-        localStorage.setItem('favorites', JSON.stringify(newFavorites));
+        saveLocalStorage('favorites', newFavorites);
     } else {
         favorites.push(movie);
-        localStorage.setItem('favorites', JSON.stringify(favorites));
+        saveLocalStorage('favorites', favorites);
     }
-}
+};
 
 export const editPersonalNote = (movie) => {
     const newNote = prompt('Personal Note:');
@@ -40,29 +34,39 @@ export const editPersonalNote = (movie) => {
         addPersonalNote(movie, newNote);
         return newNote;
     }
-}
+};
 
 export const addPersonalNote = (movie, text = "") => {
-    const notes = getPersonalNotes();
+    const notes = getLocalStorage('personalNotes');
 
-    if (!hasPersonalNote(movie) && text !== "") {
-        const newNote = new PersonalNote(movie.id, text);
-        notes.push(newNote);
-        localStorage.setItem("personalNotes", JSON.stringify(notes));
-    } else if (hasPersonalNote(movie) && text !== "") {
-        const newNote = new PersonalNote(movie.id, text);
+    if (!isStored('personalNotes', movie) && text !== "") {
+        notes.push(new PersonalNote(movie.id, text));
+        saveLocalStorage('personalNotes', notes);
+    } else if (isStored('personalNotes', movie) && text !== "") {
         const newPersonalNotes = notes.filter((item) => item.movieId !== movie.id);
-        newPersonalNotes.push(newNote);
-        localStorage.setItem("personalNotes", JSON.stringify(newPersonalNotes));
+        newPersonalNotes.push(new PersonalNote(movie.id, text));
+        saveLocalStorage('personalNotes', newPersonalNotes);
     } else {
         const newPersonalNotes = notes.filter((item) => item.movieId !== movie.id);
-        localStorage.setItem("personalNotes", JSON.stringify(newPersonalNotes));
+        saveLocalStorage('personalNotes', newPersonalNotes);
     }
-}
+};
 
 export const getPersonalNote = (movie) => {
-    const notes = getPersonalNotes();
+    const notes = getLocalStorage('personalNotes');
     const note = notes.find((item) => item.movieId === movie.id);
     if (!note) return '';
     else return note.text;
-}
+};
+
+// SOME NOT YET DONE REFACTORED FUNCTIONS
+
+// const getStoredItem = (storageName, storageReference = undefined) => {
+//     if (!storageReference) return null;
+//     if (storageName === 'personalNotes') {
+//         const notes = getLocalStorage('personalNotes');
+//         const note = notes.find((item) => item.movieId === storageReference.id);
+//         if (!note) return '';
+//         else return note.text;
+//     }
+// }
