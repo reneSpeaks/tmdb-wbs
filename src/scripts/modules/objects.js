@@ -2,8 +2,8 @@
 // CUTS DOWN CREATED OBJECT TO ONLY THE PIECES THAT ARE NEEDED FROM THE API CALL
 
 export class Movie {
-    constructor(id, title, img, description, rating) {
-        this.id = id;
+    constructor(movieId, title, img, description, rating) {
+        this.movieId = movieId;
         this.title = title;
         this.description = description;
         this.rating = rating;
