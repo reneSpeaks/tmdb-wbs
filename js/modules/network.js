@@ -36,7 +36,7 @@ const getMovies = async (query) => {
         };
 
         const response = await fetch(query, options);
-        if (!response.ok) throw new Error(response.statusText);
+        if (!response.ok) return Promise.reject(Error(response.statusText));
 
         const data = await response.json();
 
