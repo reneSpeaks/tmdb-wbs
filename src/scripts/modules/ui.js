@@ -58,14 +58,14 @@ export function addMovieCard(movie, section = '') {
     if (section === 'journal') {
         const personalNotesButton = createElement('button', '', cardOptions, {
             class: `hover:scale-110 transition-all text-lg px-4 pt-2 ${setColor('personalNotes', movie)}`,
-            onclick: `movie_modal${movie.id}.showModal()`,
+            onclick: `movie_modal${movie.movieId}.showModal()`,
         });
         const personalNotesIcon = createElement('i', '', personalNotesButton, {
             class: 'fa-solid fa-pen-to-square',
         });
         const modalDialog = createElement('dialog', '', leftContent, {
             class: 'modal',
-            id: `movie_modal${movie.id}`,
+            id: `movie_modal${movie.movieId}`,
         });
         const modalBox = createElement('div', '', modalDialog, {
             class: 'modal-box',
